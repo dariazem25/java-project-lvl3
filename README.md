@@ -4,10 +4,10 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/062f53d8cdbb0d68047b/maintainability)](https://codeclimate.com/github/dariazem25/java-project-lvl3/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/062f53d8cdbb0d68047b/test_coverage)](https://codeclimate.com/github/dariazem25/java-project-lvl3/test_coverage)
 
-#Data Validator
+# Data Validator
 Data Validator - is a library that validates correctness of data.
 
-#How to use
+# How to use
 Schema - a structure with rules for data validation.
 There are three schemas:
 1. StringSchema
