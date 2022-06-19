@@ -228,7 +228,7 @@ public class ValidatorTest {
         Validator validator = new Validator();
         MapSchema mapSchema = validator.map();
         mapSchema.required();
-        mapSchema.sizeOf(2);
+        mapSchema.sizeof(2);
 
         // empty map
         boolean actualResult1 = mapSchema.isValid(new HashMap<>());
