@@ -26,4 +26,9 @@ public final class MapSchema extends BaseSchema<Map> {
         });
         return this;
     }
+
+    @Override
+    public boolean isValid(Object value) {
+        return (value == null || value instanceof Map) && super.isValid(value);
+    }
 }

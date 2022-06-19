@@ -7,14 +7,18 @@ import java.util.function.Predicate;
 public class BaseSchema<T> {
     private List<Predicate<T>> rules = new ArrayList<>();
 
-    public final boolean isValid(T obj) {
+    /**
+     * @param obj - any object
+     * @return true if an object is satisfied defined rules for schema, and false if not
+     */
+    public boolean isValid(Object obj) {
         if (obj == null && rules.isEmpty()) {
             return true;
         } else if (obj == null) {
             return false;
         }
 
-        for (Predicate<T> p : rules) {
+        for (Predicate p : rules) {
             if (!p.test(obj)) {
                 return false;
             }

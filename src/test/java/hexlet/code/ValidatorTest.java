@@ -6,8 +6,8 @@ import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ValidatorTest {
@@ -22,7 +22,7 @@ public class ValidatorTest {
 
     //StringSchema tests
     @Test
-    public void isEmptyStringTest() {
+    public void requiredStringTest() {
         Validator validator = new Validator();
         StringSchema stringSchema = validator.string();
 
@@ -43,6 +43,10 @@ public class ValidatorTest {
         // null
         boolean actualResult4 = stringSchema.isValid(null);
         Assertions.assertFalse(actualResult4);
+
+        // invalid type
+        boolean actualResult5 = stringSchema.isValid(1);
+        Assertions.assertFalse(actualResult5);
     }
 
 
@@ -98,11 +102,11 @@ public class ValidatorTest {
 
         numberSchema.required();
 
-        // max long
+        // max integer
         boolean actualResult2 = numberSchema.isValid(Integer.MAX_VALUE);
         Assertions.assertTrue(actualResult2);
 
-        // min long
+        // min integer
         boolean actualResult3 = numberSchema.isValid(Integer.MIN_VALUE);
         Assertions.assertTrue(actualResult3);
 
@@ -113,6 +117,10 @@ public class ValidatorTest {
         // 0
         boolean actualResult5 = numberSchema.isValid(0);
         Assertions.assertTrue(actualResult5);
+
+        // invalid type
+        boolean actual6 = numberSchema.isValid("123");
+        Assertions.assertFalse(actual6);
     }
 
     @Test
@@ -209,6 +217,10 @@ public class ValidatorTest {
         // null
         boolean actualResult3 = mapSchema.isValid(null);
         Assertions.assertFalse(actualResult3);
+
+        // invalid type
+        boolean actual4 = mapSchema.isValid(List.of());
+        Assertions.assertFalse(actual4);
     }
 
     @Test

@@ -16,4 +16,9 @@ public final class StringSchema extends BaseSchema<String> {
         addRules(s -> s.contains(substring));
         return this;
     }
+
+    @Override
+    public boolean isValid(Object value) {
+        return (value == null || value instanceof String) && super.isValid(value);
+    }
 }

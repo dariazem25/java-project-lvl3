@@ -18,4 +18,9 @@ public final class NumberSchema extends BaseSchema<Integer> {
         addRules(n -> n >= a && n <= b);
         return this;
     }
+
+    @Override
+    public boolean isValid(Object value) {
+        return (value == null || value instanceof Integer) && super.isValid(value);
+    }
 }
