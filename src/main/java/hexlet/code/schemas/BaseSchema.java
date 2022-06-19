@@ -22,7 +22,7 @@ public class BaseSchema<T> {
         return true;
     }
 
-    public final List<Predicate<T>> getRules() {
-        return rules;
+    protected final void addRules(Predicate<T> p) {
+        rules.add(p);
     }
 }
