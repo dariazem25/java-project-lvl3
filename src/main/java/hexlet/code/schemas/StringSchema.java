@@ -3,17 +3,17 @@ package hexlet.code.schemas;
 public final class StringSchema extends BaseSchema<String> {
 
     public StringSchema required() {
-        addRules(s -> !s.isEmpty());
+        addRules(s -> s != null && !s.isEmpty());
         return this;
     }
 
     public StringSchema minLength(int length) {
-        addRules(s -> s.length() >= length);
+        addRules(s -> s == null || s.length() >= length);
         return this;
     }
 
     public StringSchema contains(String substring) {
-        addRules(s -> s.contains(substring));
+        addRules(s -> s == null || s.contains(substring));
         return this;
     }
 

@@ -11,7 +11,7 @@ public final class MapSchema extends BaseSchema<Map> {
     }
 
     public MapSchema sizeof(int size) {
-        addRules(m -> m.size() == size);
+        addRules(m -> m == null || m.size() == size);
         return this;
     }
 

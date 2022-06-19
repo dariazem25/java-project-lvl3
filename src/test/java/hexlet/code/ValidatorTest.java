@@ -127,16 +127,26 @@ public class ValidatorTest {
     public void positiveNumberTest() {
         Validator validator = new Validator();
         NumberSchema numberSchema = validator.number();
-        numberSchema.required();
-        numberSchema.positive();
 
-        // positive number
-        boolean actualResult1 = numberSchema.isValid(num2);
+        // null
+        boolean actualResult1 = numberSchema.isValid(null);
         Assertions.assertTrue(actualResult1);
 
+        numberSchema.positive();
+
+        // null
+        boolean actualResult2 = numberSchema.isValid(null);
+        Assertions.assertTrue(actualResult2);
+
+        numberSchema.required();
+
+        // positive number
+        boolean actualResult3 = numberSchema.isValid(num2);
+        Assertions.assertTrue(actualResult3);
+
         // negative number
-        boolean actualResult2 = numberSchema.isValid(-num2);
-        Assertions.assertFalse(actualResult2);
+        boolean actualResult4 = numberSchema.isValid(-num2);
+        Assertions.assertFalse(actualResult4);
 
         // 0
         boolean actualResult5 = numberSchema.isValid(0);
@@ -285,7 +295,7 @@ public class ValidatorTest {
         human4.put("name", "Vasya");
         human4.put("age", null);
         boolean actualResult4 = schema.isValid(human4);
-        Assertions.assertFalse(actualResult4);
+        Assertions.assertTrue(actualResult4);
 
         // Name does not contain "a" letter
         Map<String, Object> human5 = new HashMap<>();
